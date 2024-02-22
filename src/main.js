@@ -115,11 +115,13 @@ function showImages(images) {
       <a href="${largeImageURL}" data-lightbox="gallery" data-title="${tags}">
         <img src="${webformatURL}" alt="${tags}" title="${tags}"/>
       </a>
+      <div class="card-border">
       <p>Likes: ${likes}</p>
       <p>Views: ${views}</p>
       <p>Comments: ${comments}</p>
       <p>Downloads: ${downloads}</p>
-    </div>)`);
+      </div>
+    </div>`);
 
     GALLERY.innerHTML = markup.join('');
 
