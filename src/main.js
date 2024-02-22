@@ -123,6 +123,22 @@ function showImages(images) {
 
     GALLERY.innerHTML = markup.join('');
 
+    const imgLoad = GALLERY.querySelectorAll('img');
+    const loadDelay = Array.from(imgLoad).map(img =>
+        new Promise((resolve, reject) => {
+            img.onload = resolve;
+            img.onerror = reject;
+        })
+    );
+
+    Promise.all(loadDelay)
+        .then(() => {
+            LOADER.style.display = 'none';
+        })
+        .catch((error) => {
+            console.error('Error loading images:', error);
+        });
+
     lightbox.refresh()
 }
 
