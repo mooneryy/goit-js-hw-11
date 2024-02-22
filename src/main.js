@@ -116,10 +116,18 @@ function showImages(images) {
         <img src="${webformatURL}" alt="${tags}" title="${tags}"/>
       </a>
       <div class="card-border">
-      <p>Likes: ${likes}</p>
-      <p>Views: ${views}</p>
-      <p>Comments: ${comments}</p>
-      <p>Downloads: ${downloads}</p>
+      <div class="param">
+      <p class="title">Likes:</p>
+      <p class="title">Views:</p>
+      <p class="title">Comments:</p>
+      <p class="title">Downloads:</p>
+       </div>
+        <div class="param">
+      <p class="title-value">${likes}</p>
+      <p class="title-value">${views}</p>
+      <p class="title-value">${comments}</p>
+      <p class="title-value">${downloads}</p>
+       </div>
       </div>
     </div>`);
 
