@@ -54,8 +54,8 @@ const lightbox = new SimpleLightbox('.gallery a');
 
 
 
-SEARCH_FORM.addEventListener('submit', function (e) {
-    e.preventDefault();
+SEARCH_FORM.addEventListener('submit', function (event) {
+    event.preventDefault();
     const query = SEARCH_INPUT.value.trim();
 
     if (query === "") {
@@ -74,8 +74,10 @@ SEARCH_FORM.addEventListener('submit', function (e) {
 
     fetchImages(query)
         .then((data) => {
-            LOADER.style.display = 'none';
-
+            setTimeout(() => {
+                LOADER.style.display = 'none';
+            }, 500);
+           
             if (data.hits.length === 0) {
                 iziToast.warning({
                     title: 'No results',
