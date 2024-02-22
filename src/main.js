@@ -76,7 +76,7 @@ SEARCH_FORM.addEventListener('submit', function (event) {
         .then((data) => {
             setTimeout(() => {
                 LOADER.style.display = 'none';
-            }, 500);
+            }, 1500);
            
             if (data.hits.length === 0) {
                 iziToast.warning({
