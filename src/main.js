@@ -43,6 +43,9 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 import { fetchImages } from "../js/pixabay-api";
 import { showImages } from "../js/render-functions";
 
+import cautionIcon from './img/caution.svg';
+import errorIcon from './img/error.svg';
+
 const LOADER = document.getElementById('loader');
 const GALLERY = document.getElementById('gallery');
 const lightbox = new SimpleLightbox('.gallery a');
@@ -62,7 +65,7 @@ SEARCH_FORM.addEventListener('submit', function (event) {
             position: 'topRight',
             backgroundColor: '#ef4040',
             messageColor: '#fafafb',
-            iconUrl: '/img/error.svg'
+            iconUrl: errorIcon,
         });
         return;
     }
@@ -87,7 +90,7 @@ SEARCH_FORM.addEventListener('submit', function (event) {
                     position: 'topRight',
                     backgroundColor: '#ffa000',
                     messageColor: '#fafafb',
-                     iconUrl: '/img/caution.svg'
+                     iconUrl: cautionIcon
                 });
             } else {
                 showImages(data.hits);
