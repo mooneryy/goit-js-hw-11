@@ -62,7 +62,7 @@ SEARCH_FORM.addEventListener('submit', function (event) {
             position: 'topRight',
             backgroundColor: '#ef4040',
             messageColor: '#fafafb',
-            iconUrl: './img/error.svg'
+            iconUrl: '/img/error.svg'
         });
         return;
     }
@@ -87,7 +87,7 @@ SEARCH_FORM.addEventListener('submit', function (event) {
                     position: 'topRight',
                     backgroundColor: '#ffa000',
                     messageColor: '#fafafb',
-                     iconUrl: './img/caution.svg'
+                     iconUrl: '/img/caution.svg'
                 });
             } else {
                 showImages(data.hits);
