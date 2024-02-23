@@ -36,22 +36,18 @@
 
 */
 
-
-//бібліотеки
 import iziToast from "izitoast";
 import "izitoast/dist/css/iziToast.min.css";
-
 import SimpleLightbox from "simplelightbox";
 import "simplelightbox/dist/simple-lightbox.min.css";
+import { fetchImages } from "../js/pixabay-api";
+import { showImages } from "../js/render-functions";
 
-
-const KEY = '42472601-e2efb745d6431960b7108569a';
-const SEARCH_FORM = document.getElementById('search-form');
-const SEARCH_INPUT = document.getElementById('search-input');
 const LOADER = document.getElementById('loader');
 const GALLERY = document.getElementById('gallery');
 const lightbox = new SimpleLightbox('.gallery a');
-
+const SEARCH_FORM = document.getElementById('search-form');
+const SEARCH_INPUT = document.getElementById('search-input');
 
 
 SEARCH_FORM.addEventListener('submit', function (event) {
@@ -98,58 +94,9 @@ SEARCH_FORM.addEventListener('submit', function (event) {
         });
 });
 
-function fetchImages(search) {
-    const url = `https://pixabay.com/api/?key=${KEY}&q=${search}&image_type=photo&orientation=horizontal&safesearch=true`;
 
-    return fetch(url).then((res) => {
-        if (!res.ok) {
-            throw new Error(`HTTP error! Status: ${res.status}`);
-        }
-        return res.json();
-    });
-}
 
-function showImages(images) {
-    const markup = images.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) =>
-        `<div class="card">
-      <a href="${largeImageURL}" data-lightbox="gallery" data-title="${tags}">
-        <img src="${webformatURL}" alt="${tags}" title="${tags}"/>
-      </a>
-      <div class="card-border">
-      <div class="param">
-      <p class="title">Likes:</p>
-      <p class="title">Views:</p>
-      <p class="title">Comments:</p>
-      <p class="title">Downloads:</p>
-       </div>
-        <div class="param">
-      <p class="title-value">${likes}</p>
-      <p class="title-value">${views}</p>
-      <p class="title-value">${comments}</p>
-      <p class="title-value">${downloads}</p>
-       </div>
-      </div>
-    </div>`);
 
-    GALLERY.innerHTML = markup.join('');
-
-    const imgLoad = GALLERY.querySelectorAll('img');
-    const loadDelay = Array.from(imgLoad).map(img =>
-        new Promise((resolve, reject) => {
-            img.onload = resolve;
-            img.onerror = reject;
-        })
-    );
-
-    Promise.all(loadDelay)
-        .then(() => {
-            LOADER.style.display = 'none';
-        })
-        .catch((error) => {
-            console.error('Error loading images:', error);
-        });
-
-    lightbox.refresh()
-}
+    
 
 

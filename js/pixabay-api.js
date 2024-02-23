@@ -1,4 +1,6 @@
-function fetchImages(search) {
+const KEY = '42472601-e2efb745d6431960b7108569a';
+
+export function fetchImages(search) {
     const url = `https://pixabay.com/api/?key=${KEY}&q=${search}&image_type=photo&orientation=horizontal&safesearch=true`;
 
     return fetch(url).then((res) => {
