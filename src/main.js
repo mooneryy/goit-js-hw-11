@@ -58,6 +58,11 @@ SEARCH_FORM.addEventListener('submit', function (event) {
         iziToast.error({
             title: 'Error',
             message: 'Please enter a search term!',
+            theme: 'dark',
+            position: 'topRight',
+            backgroundColor: '#ef4040',
+            messageColor: '#fafafb',
+            iconUrl: './img/error.svg',
         });
         return;
     }
@@ -77,7 +82,12 @@ SEARCH_FORM.addEventListener('submit', function (event) {
             if (data.hits.length === 0) {
                 iziToast.warning({
                     title: 'No results',
-                    message: 'Sorry, there are no images matching your search.Please try again!'
+                    message: 'Sorry, there are no images matching your search.Please try again!',
+                     theme: 'dark',
+                    position: 'topRight',
+                    backgroundColor: '#ffa000',
+                    messageColor: '#fafafb',
+                     iconUrl: './img/caution.svg',
                 });
             } else {
                 showImages(data.hits);
